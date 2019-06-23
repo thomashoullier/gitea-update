@@ -50,10 +50,16 @@ And with this, we're done, we should have downloaded:
 
 ## Verifying the signatures
 The public key for gitea needs to be imported (only once).
-  gpg --keyserver pgp.mit.edu --recv 7C9E68152594688862D62AF62D9AE806EC1592E2
+
+```shell
+gpg --keyserver pgp.mit.edu --recv 7C9E68152594688862D62AF62D9AE806EC1592E2
+```
 
 Then we can check the archive we downloaded:
-  gpg --verify gitea-x.x.x-linux-amd64.xz.asc gitea-x.x.x-linux-amd64.xz
+
+```shell
+gpg --verify gitea-x.x.x-linux-amd64.xz.asc gitea-x.x.x-linux-amd64.xz
+```
 
 This command returns to stdout:
   * 0 for a good signature.
