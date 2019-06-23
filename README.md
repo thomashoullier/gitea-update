@@ -6,9 +6,14 @@ by downloading the latest release from Github.
 As indicated in [1], we can use the github API in order to have a parsable
 document containing the download links to the files we want.
 
-''https://api.github.com/repos/go-gitea/gitea/releases/latest'' points to the
+`https://api.github.com/repos/go-gitea/gitea/releases/latest` points to the
 latest release. In it, we can extract the download URL for all the assets of
-this particular release. It is listed under ''assets_url''.
+this particular release. It is listed under `assets_url`. We get the link with
+the one-liner provided in [1]:
+
+```shell
+curl -s https://api.github.com/repos/go-gitea/gitea/releases/latest | grep assets_url | cut -d '"' -f 4
+```
 
 ## References
 1. https://stackoverflow.com/questions/24987542/is-there-a-link-to-github-for-downloading-a-file-in-the-latest-release-of-a-repo
