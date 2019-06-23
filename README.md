@@ -49,7 +49,15 @@ And with this, we're done, we should have downloaded:
 * gitea-x.x.x-linux-amd64.xz.sha256
 
 ## Verifying the signatures
+The public key for gitea needs to be imported (only once).
+  gpg --keyserver pgp.mit.edu --recv 7C9E68152594688862D62AF62D9AE806EC1592E2
 
+Then we can check the archive we downloaded:
+  gpg --verify gitea-x.x.x-linux-amd64.xz.asc gitea-x.x.x-linux-amd64.xz
+
+This command returns to stdout:
+  * 0 for a good signature.
+  * 1 for a bad signature.
 
 ## References
 1. https://stackoverflow.com/questions/24987542/is-there-a-link-to-github-for-downloading-a-file-in-the-latest-release-of-a-repo
