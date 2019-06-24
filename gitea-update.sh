@@ -13,13 +13,17 @@ fi
 last_ver="$(curl -s https://api.github.com/repos/go-gitea/gitea/releases/latest\
 | grep created_at | head -1 |cut -d '"' -f 4)"
 
-# Install new gitea if version do not match
+# Exit if versions match
 echo "Installed version: '$installed_ver' ; Last github release: '$last_ver'"
-if [ "$installed_ver" != "$last_ver" ]
-then 	
-	echo "Launching install..."
-else 	
-	echo "Gitea already up to date."
+if [ "$installed_ver" = "$last_ver" ]
+then 	echo "Gitea already up to date."
+	exit 0
+fi
+
+# Download and check the latest assets.
+if ! ./download-assets.sh
+then 	echo "Aborting installation."
+	exit 1
 fi
 
 # All went well, store the last installed version

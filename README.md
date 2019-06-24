@@ -72,7 +72,7 @@ Then we can check the archive we downloaded:
 gpg --verify gitea-x.x.x-linux-amd64.xz.asc gitea-x.x.x-linux-amd64.xz
 ```
 
-This command returns to stdout:
+This command returns:
   * 0 for a good signature.
   * 1 for a bad signature.
 
