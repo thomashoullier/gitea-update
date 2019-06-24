@@ -1,6 +1,9 @@
 #!/bin/sh
 #Keep Gitea up to date automatically.
 
+#Set the working directory to that of the script.
+cd "${0%/*}" || exit
+
 #First check the version previously installed and most recent github version
 if [ -e installed-ver.txt ]
 then	installed_ver="$(cat installed-ver.txt)"
