@@ -31,3 +31,5 @@ fi
 
 # All went well, store the last installed version
 echo "$last_ver" > installed-ver.txt
+
+echo "Gitea updated successfully!"

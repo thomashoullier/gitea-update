@@ -16,10 +16,10 @@ then
 fi
 
 # Move old binary to backup.
-mv /usr/local/bin/gitea gitea.backup
+sudo mv /usr/local/bin/gitea gitea.backup
 
 # Move last binary to bin location
-mv gitea /usr/local/bin/gitea
+sudo mv gitea /usr/local/bin/gitea
 
 # Start the new binary.
 sudo systemctl start gitea
