@@ -26,5 +26,8 @@ then 	echo "Aborting installation."
 	exit 1
 fi
 
+# Switch the binaries
+./switch-binary.sh
+
 # All went well, store the last installed version
 echo "$last_ver" > installed-ver.txt
