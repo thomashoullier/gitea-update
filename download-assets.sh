@@ -6,7 +6,7 @@
 cd "${0%/*}" || exit
 
 # First clean the directory by removing every file with xz in name.
-rm *xz*
+rm ./*xz*
 
 # Download the latest assets and check success.
 if ! curl -s https://api.github.com/repos/go-gitea/gitea/releases/latest \
@@ -22,22 +22,24 @@ echo "Assets downloaded successfully."
 
 # Check signature
 #	First import the public key
-if ! gpg2 --recv 7C9E68152594688862D62AF62D9AE806EC1592E2
+if ! gpg --recv 7C9E68152594688862D62AF62D9AE806EC1592E2
 then echo "Failed to import public key"
      exit 1
 fi
 echo "Public key successfully imported"
 
 #	Then check the signature of archive
-if ! gpg2 --verify *.asc *.xz
+if ! gpg --verify ./*.asc ./*.xz
 then echo "Signature check FAILED"
      exit 1
 fi
 echo "Signatures match"
 
 # Uncompress
-unxz *.xz
-mv *amd64 gitea
+unxz ./*.xz
+mv ./*amd64 gitea
 chmod +x gitea
+
+echo "Binary uncompressed."
 
 exit 0
