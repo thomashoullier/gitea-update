@@ -35,4 +35,9 @@ then echo "Signature check FAILED"
 fi
 echo "Signatures match"
 
+# Uncompress
+unxz *.xz
+mv *amd64 gitea
+chmod +x gitea
+
 exit 0
