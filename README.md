@@ -5,7 +5,23 @@ by downloading the latest release from Github.
 As indicated in [1], we can use the github API in order to have a parsable
 document containing the download links to the files we want.
 
-## Checking the date of latest release
+## Usage
+Just put a cronjob in place on the server hosting your Gitea instance.
+Make sure the scripts are accessible and executable. You can run the script
+as often as you want since downloads will only happen if a new release has been
+published on Github.
+
+`gitea-update.sh` is the script to execute, it depends on the other scripts to
+function.
+
+## Test
+I use this script to maintain my Gitea instance automatically. This should work
+until it doesn't.
+
+Passes `shellcheck`.
+
+## Technical details
+### Checking the date of latest release
 We get the date of the last release with:
 
 ```shell
@@ -15,7 +31,7 @@ curl -s https://api.github.com/repos/go-gitea/gitea/releases/latest \
 
 We just `grep` out the first `created_at` value.
 
-## Getting the latest release of Gitea through the Github API
+### Getting the latest release of Gitea through the Github API
 
 `https://api.github.com/repos/go-gitea/gitea/releases/latest` points to the
 latest release. In it, we can extract the download URL for all the assets of
@@ -59,7 +75,7 @@ And with this, we're done, we should have downloaded:
 * gitea-x.x.x-linux-amd64.xz.asc
 * gitea-x.x.x-linux-amd64.xz.sha256
 
-## Verifying the signatures
+### Verifying the signatures
 The public key for gitea needs to be imported (only once).
 
 ```shell
