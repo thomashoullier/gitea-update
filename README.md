@@ -11,12 +11,14 @@ Make sure the scripts are accessible and executable. You can run the script
 as often as you want since downloads will only happen if a new release has been
 published on Github.
 
+The `gitea` binary should be installed at `/usr/local/bin/gitea`.
+
 `gitea-update.sh` is the script to execute, it depends on the other scripts to
 function.
 
 ## Test
-I use this script to maintain my Gitea instance automatically. This should work
-until it doesn't.
+I use this script to maintain my Gitea instance automatically. My server runs 
+Ubuntu 18.04 with the most vanilla setup. This should work until it doesn't.
 
 Passes `shellcheck`.
 
