@@ -11,7 +11,7 @@ else	installed_ver=""
 fi
 
 last_ver="$(curl -s https://api.github.com/repos/go-gitea/gitea/releases/latest\
-| grep created_at | head -1 |cut -d '"' -f 4)"
+| grep -Po "\"created_at\":.*?\".*?\"" | head -1 |cut -d '"' -f 4)"
 
 # Exit if versions match
 echo "Installed version: '$installed_ver' ; Last github release: '$last_ver'"

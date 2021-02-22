@@ -22,7 +22,7 @@ echo "Assets downloaded successfully."
 
 # Check signature
 #	First import the public key
-if ! gpg --recv 7C9E68152594688862D62AF62D9AE806EC1592E2
+if ! gpg --keyserver keys.openpgp.org --recv 7C9E68152594688862D62AF62D9AE806EC1592E2
 then echo "Failed to import public key"
      exit 1
 fi
